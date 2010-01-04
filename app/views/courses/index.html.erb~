@@ -1,0 +1,20 @@
+<h2><%= t :listing_courses %></h2>
+
+<table>
+  <tr>
+    <th><%= t :name %></th>
+    <th><%= t :desc %></th>
+  </tr>
+
+<% @courses.each do |course| %>
+  <tr>
+    <td><%= link_to course.name, course %></td>
+    <td><%=h course.desc %></td>
+  </tr>
+<% end %>
+</table>
+
+<p><%= link_to t(:new_course), new_course_path %></p>
+
+</p>
+

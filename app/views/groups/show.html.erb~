@@ -1,0 +1,14 @@
+<h2><%=h @course.name %> (<%=h @party.time %>): <%=h @group.time %></h2>
+
+<p>Party group leader: <%=h @group.ass && @group.ass.name %></p>
+
+<h3>Partiers (<%=h pool_count @group %>)</h3>
+
+<ol>
+  <% @group.users.each do |user| %>
+    <% klass="queued" unless @group.pooled_in?(user) %>
+    <li class="<%= klass %>"><%=h user.name %></li>
+  <% end %>
+  <li class="<%= klass %>"><%= button_to "pool me in!", pool_course_party_group_path %></li>
+</ol>
+

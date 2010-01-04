@@ -1,0 +1,8 @@
+h1 { color: orange; }
+h1 a { text-decoration: none; }
+
+.notice { color: green; }
+.warning { color: red; }
+.comment { color: silver; }
+
+th { text-align: left; }

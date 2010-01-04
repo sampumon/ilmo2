@@ -1,0 +1,28 @@
+<h2><%=h @course.name %></h2>
+
+<p>
+  <%=h @course.desc %>
+</p>
+
+<ol>
+
+<% for party in @course.parties %>
+<li>
+  <% # TODO: should i maybe somehow h-espace the party time? %>
+  <%= link_to party.time, course_party_path(@course, party) %>
+  (<%= party.groups.count %>)
+</li>
+<% end %>
+
+<li>
+  <% form_for([@course, @party]) do |f| %>
+    <%= f.error_messages %>
+    <!-- <%= f.label :time %> -->
+    <%= f.text_field :time %>    
+    <%= f.submit 'new party' %>
+  <% end %>
+</li>
+
+<!-- <li><%= link_to "new party", new_course_party_path(@course) %></li> -->
+</ol>
+

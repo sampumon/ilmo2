@@ -1,0 +1,13 @@
+<h2>New group for <%=h @course.name %> (<%=h @party.time %>)</h2>
+
+<% form_for(@group) do |f| %>
+  <%= f.error_messages %>
+  <%= f.label :time %>
+  <%= f.text_field :time %>
+  <%= f.label :where %>
+  <%= f.text_field :where %>
+  <%= f.label :ass, 'Who' %>
+  <%= f.text_field :ass %>
+  <%= f.submit %>
+<% end %>
+

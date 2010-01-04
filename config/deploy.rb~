@@ -1,0 +1,61 @@
+#
+# Requires gem "capistrano"
+#
+# Init Capfile with "capify" -command, then replace config/deploy.rb with this
+#
+#
+# Usage
+#
+# First run: cap deploy:setup
+#   This generates directory structure
+#
+# Then: cap deploy  !
+#
+# see cap -T for tasks
+
+
+# Copy settings / TODO: try deploy_via :checkout
+set :use_sudo, false
+set :deploy_via, :checkout
+set :copy_strategy, :export
+set :copy_compression, :gzip
+
+# tunnel connection via public gateway
+# note: ssh-keys needed: 1) local -> gateway, 2) gateway -> final
+set :gateway, "melkinpaasi.cs.helsinki.fi"
+
+# needs to be set when rake is not in standard location
+set :rake, "/opt/ruby-enterprise-1.8.7-2009.10/bin/rake"
+
+# Server settings
+
+set :application, "ilmo2"
+
+set :repository,  "svn+ssh://skaipiai@melkinpaasi.cs.helsinki.fi/fs/home/skaipiai/svn/ilmo2"
+set :scm, "subversion"
+
+# deploy to ilmo2, but link: /home/paksula/rails -> /home/paksula/ilmo2/current
+# ln -s ilmo2/current rails
+set :deploy_to, "/home/skaipiai/ilmo2"
+set :user, "skaipiai"
+
+role :app, "rails.cs.helsinki.fi", :primary => true
+role :db, "rails.cs.helsinki.fi", :primary => true
+
+# TODO: fix queer umask!
+
+namespace :deploy do
+  task :restart do
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+end
+
+
+after "deploy:symlink", "deploy:migrate"
+
+# namespace :app do
+#   desc "Run sample data on production"
+#   task :sample do
+#     run "export RAILS_ENV=production ; cd #{current_path} ; rake db:seed"
+#   end
+# end

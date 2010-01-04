@@ -1,0 +1,6 @@
+class Party < ActiveRecord::Base
+  validates_presence_of :course, :time
+  validates_uniqueness_of :time, :scope => :course
+  belongs_to :course
+  has_many :groups, :dependent => :destroy
+end

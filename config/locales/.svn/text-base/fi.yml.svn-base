@@ -1,0 +1,17 @@
+# My Finnish localization stuff.
+
+fi:
+  hello: "Terve munapää"
+  page_loaded: "Sivu ladattu"
+  listing_courses: "Kurssilista"
+  name: "Nimi"
+  desc: "Kuvaus"
+  parties: "Juhlia"
+  show: "Kazo"
+  new_course: "Uusi kurssi"
+  create_success: "Luonti kävi hyvin"
+
+  time:
+    formats:
+      default: "%d.%m.%Y %H:%M"
+

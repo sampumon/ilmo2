@@ -1,0 +1,5 @@
+class IndexController < ApplicationController
+  def index
+    @feeds = Feed.recent # TODO: recent 10?
+  end
+end

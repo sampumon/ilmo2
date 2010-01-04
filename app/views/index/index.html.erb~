@@ -1,0 +1,8 @@
+<p>See available <%= link_to 'courses', courses_path %>. Admin? See <%= link_to 'users', users_path %>!</p>
+
+<h2>Recent pool-ins</h2>
+
+<% for feed in @feeds %>
+<p><%= I18n.l(feed.created_at) << ": " << feed.body << "." %></p>
+<% end %>
+

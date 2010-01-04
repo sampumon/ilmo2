@@ -1,0 +1,24 @@
+<h2>Editing user <%=h @olduser.name %></h2>
+
+<% form_for @olduser, :html => { :multipart => true } do |f| %>
+  <%= f.error_messages %>
+
+
+  <!-- NOTE: these are obviously excess, but help testing which attributes are locked! -->
+  <% [ :id, :name, :pass, :studentnum, :created_at, :updated_at ].each do |kent| %>
+    <p>
+      <%= f.label kent %>
+      <%= f.text_field kent %>
+    </p>
+  <% end %>
+  
+  <p>
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %>
+  </p>
+
+  <p>
+    <%= f.submit 'Update me' %>
+  </p>
+<% end %>
+

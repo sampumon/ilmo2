@@ -1,0 +1,77 @@
+10
+
+dir
+18
+svn+ssh://skaipiai@melkki.cs.helsinki.fi/fs/home/skaipiai/svn/ilmo2/test
+svn+ssh://skaipiai@melkki.cs.helsinki.fi/fs/home/skaipiai/svn/ilmo2
+
+
+
+2009-12-04T03:18:16.824303Z
+15
+skaipiai
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+906bd900-3aee-465e-aa06-eed872dfa38f
+
+unit
+dir
+
+test_helper.rb
+file
+
+
+
+
+2009-11-17T20:23:13.617951Z
+e297614c72684d065aef001f86188732
+2009-11-17T19:47:40.621768Z
+1
+skaipiai
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1800
+
+performance
+dir
+
+functional
+dir
+
+integration
+dir
+
+fixtures
+dir
+

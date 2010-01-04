@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user: MyText
+  pass: MyText
+  studentnum: 1
+
+two:
+  user: MyText
+  pass: MyText
+  studentnum: 1

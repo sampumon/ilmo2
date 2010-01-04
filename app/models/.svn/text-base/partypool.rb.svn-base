@@ -1,0 +1,28 @@
+class Partypool < ActiveRecord::Base
+  belongs_to :user
+  belongs_to :group
+
+  # http://rails.rubyonrails.org/classes/ActiveRecord/Base.html#M002263
+  # http://api.rubyonrails.org/classes/ActiveRecord/Callbacks.html
+  before_validation :set_party
+  validates_uniqueness_of :user_id, :scope => :party_id
+  
+  after_create :feed_create
+  after_destroy :feed_destroy
+  
+protected
+  def set_party
+    self.party_id = self.group.party_id
+  end
+  
+  # Random: http://betterexplained.com/articles/intermediate-rails-understanding-models-views-and-controllers/
+  # TODO: no need at all to crete the feed, just select directly from Partypool ^____^ 
+
+  def feed_create
+    Feed.pool_in user, group
+  end
+
+  def feed_destroy
+    Feed.pool_out user, group
+  end
+end

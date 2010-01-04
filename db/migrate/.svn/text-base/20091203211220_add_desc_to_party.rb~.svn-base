@@ -1,0 +1,11 @@
+class AddDescToParty < ActiveRecord::Migration
+  def self.up
+    add_column :parties, :place, :string
+    add_column :parties, :desc, :text
+  end
+
+  def self.down
+    remove_column :parties, :desc
+    remove_column :parties, :place
+  end
+end

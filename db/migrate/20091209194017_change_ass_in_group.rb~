@@ -1,0 +1,31 @@
+class ChangeAssInGroup < ActiveRecord::Migration
+  def self.up
+    # change_column :groups, :ass, :integer
+
+    # NOTE: can't do :ass, :references, as that complains on duplicate column,
+    # and anyways would complain on SQLite3::SQLException: near "references"
+    add_column :groups, :ass_id, :integer
+
+    Group.reset_column_information
+    Group.all.each do |g|
+      user = User.find_by_name(g.ass)
+      g.update_attribute :ass_id, if user then user.id else nil end
+    end
+    
+    # not needed anymore
+    remove_column :groups, :ass
+  end
+
+  def self.down
+    # change_column :groups, :ass, :string
+
+    add_column :groups, :ass, :string
+
+    Group.reset_column_information
+    Group.all.each do |g|
+      g.update_attribute :ass, User.find(g.ass_id).name
+    end
+
+    remove_column :groups, :ass_id
+  end
+end

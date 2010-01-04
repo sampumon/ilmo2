@@ -1,0 +1,15 @@
+# My Finnish localization stuff.
+
+fi:
+  hello: "Terve munapää"
+  listing_courses: "Kurssilista"
+  name: "Nimi"
+  desc: "Kuvaus"
+  show: "Kazo"
+  new_course: "Uusi kurssi"
+  create_success: "Luonti kävi hyvin"
+
+  time:
+    formats:
+      default: "%d.%m.%Y %H:%M"
+

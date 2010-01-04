@@ -1,0 +1,35 @@
+<h2>Showing <%=h @user.name %></h2>
+
+<table>
+  <% User.column_names.each do |kent| %>
+    <tr>
+      <td><%= kent %></td>
+      <td><%= @user[kent] %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p>
+  <%= image_tag @user.avatar.url %>
+  <%= image_tag @user.avatar.url(:medium) %>
+  <%= image_tag @user.avatar.url(:thumb) %>
+</p>
+
+<h3>My couuuuuurses for <%=h @user.name %></h3>
+
+<table>
+  <tr>
+    <th>Course</th>
+    <th>Party</th>
+    <th>Group</th>
+  </tr>
+
+<% @user.groups.each do |group|%>
+  <tr>
+    <td> <%= link_to group.party.course.name, course_path(group.party.course) %> </td>
+    <td> <%= link_to group.party.time, course_party_path(group.party.course, group.party) %> </td>
+    <td> <%= link_to group.time, course_party_group_path(group.party.course, group.party, group) %> </td>
+  </tr>
+<% end %>
+
+</table>

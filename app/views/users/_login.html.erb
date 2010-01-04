@@ -1,0 +1,31 @@
+<!-- Your login/logout form! -->
+<!-- TODO: how to avoid routing to /users, could I use helpers maybe? -->
+
+<% if @logged_user %>
+
+  <% form_tag '/users/logout' do %>
+    <p>
+      <%= link_to @logged_user.name, user_path(@logged_user) %>
+      (<%= link_to "edit", edit_user_path(@logged_user) %>)
+      <%= submit_tag :logout %>
+    </p>
+  <% end %>
+
+<% else %>
+
+  <% form_tag '/users/login' do %>
+    <h3>Login?</h3>
+
+    <p>
+      <%= label_tag :user, "User" %>
+      <%= text_field_tag :user, flash[:user], :size => 10 %>
+    
+      <%= label_tag :pass, "Pass" %>
+      <%= password_field_tag :pass, "", :size => 10 %>
+
+      <%= submit_tag 'Login' %> or <%= link_to 'new user', new_user_path %>?
+    </p>
+  <% end %>
+
+<% end %>
+
